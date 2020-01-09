@@ -11,5 +11,3 @@ You can install it by import :
 # Improvement
  
  - Currently the custom control doesn't work on the creation form, we need to save and refresh the page.
-
-![alt text](img/screen.png?raw=true)
