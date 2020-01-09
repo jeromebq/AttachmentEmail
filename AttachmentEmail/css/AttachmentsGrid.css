@@ -1,0 +1,95 @@
+img {
+    max-width: 50px;
+    max-height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+td.image_style {
+    width:35px;
+}
+
+.card {
+    border: 1px solid #ffffff !important;
+    padding: 5%;
+}
+
+.confirmDelete {
+  position: absolute;
+  top: 22px;
+  left: 0px;
+  z-index: 1000;
+}
+
+.card-columns {
+  position: relative;
+}
+
+.deleteButton {
+  float: left !important;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.card:hover {
+  border: 1px solid #acabab !important;
+  }
+
+.drop-zone {
+    border: 1px solid #ddd;
+    min-height: 150px;
+    text-align: center;
+    
+    -webkit-box-sizing: border-box; 
+    -moz-box-sizing: border-box;   
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    color: #000;
+    font-family: SegoeUI,"Segoe UI";
+    font-size: 1rem;
+    font-style: normal;
+    font-variant-caps: normal;
+    font-variant-east-asian: normal;
+    font-variant-ligatures: normal;
+    font-variant-numeric: normal;
+    font-weight: 600;
+    
+    margin-left: 0;
+    margin-right: 0;
+    outline: none;
+    padding: 0 .5rem;
+    text-overflow: ellipsis;
+    
+  }
+
+.drop-zone-hover {
+  border: 2px dashed #333;
+  opacity: 0.5;
+}
+
+@media (min-width: 576px) {
+  .card-columns {
+      column-count: 2;
+  }
+}
+
+@media (min-width: 768px) {
+  .card-columns {
+      column-count: 3;
+  }
+}
+
+@media (min-width: 992px) {
+  .card-columns {
+      column-count: 4;
+  }
+}
+
+@media (min-width: 1200px) {
+  .card-columns {
+      column-count: 5;
+  }
+}
