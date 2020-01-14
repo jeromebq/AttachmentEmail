@@ -43,6 +43,7 @@ export class AttachmentEmail implements ComponentFramework.StandardControl<IInpu
 	private _attachmentContainer: HTMLDivElement;
 
 	attachmentAdded$ = this._attachmentSource.asObservable();
+	private directionCode : boolean;
 
 	/**
 	 * Empty constructor.
@@ -93,6 +94,8 @@ export class AttachmentEmail implements ComponentFramework.StandardControl<IInpu
 		// Bind to parent container
 		container.append(this._container);
 
+		this.directionCode = context.parameters.EmailDirection.raw;
+
 		//get attachements from notes
 		let reference: EntityReference = new EntityReference(
 			(<any>context).page.entityTypeName,
@@ -114,9 +117,13 @@ export class AttachmentEmail implements ComponentFramework.StandardControl<IInpu
 			await this.getAttachments(reference);
 		}
 
-		this._dropHandler = new DropHandler(this._apiClient, this._progressElement, this._progressBar, this._attachmentSource);
+		// Disable the creation of new file for the incoming email
+		if(this.directionCode){
+
+			this._dropHandler = new DropHandler(this._apiClient, this._progressElement, this._progressBar, this._attachmentSource);		
+			this._dropHandler.HandleDrop(this._dropElement, (<any>context).page.entityId, (<any>context).page.entityTypeName);
+		}
 		
-		this._dropHandler.HandleDrop(this._dropElement, (<any>context).page.entityId, (<any>context).page.entityTypeName);
 	
 	}
 
@@ -127,14 +134,18 @@ export class AttachmentEmail implements ComponentFramework.StandardControl<IInpu
 		divCard.id = `${attachment.attachmentId.id}_divcard`;
 		this._attachmentContainer.appendChild(divCard);
 
-		//create delete element
 		let deleteButton: HTMLButtonElement = document.createElement("button");
-		deleteButton.type = "button";
-		deleteButton.className = "close deleteButton";
-		deleteButton.id = `${attachment.attachmentId.id}_deleteButton`;
-		deleteButton.innerHTML = "<span>&times;</span>";
-		//this._divControl.appendChild(divCard);
-		divCard.appendChild(deleteButton);
+
+		// Disable the deletion for the incoming email
+		if(this.directionCode){
+			//create delete element			
+			deleteButton.type = "button";
+			deleteButton.className = "close deleteButton";
+			deleteButton.id = `${attachment.attachmentId.id}_deleteButton`;
+			deleteButton.innerHTML = "<span>&times;</span>";
+			//this._divControl.appendChild(divCard);
+			divCard.appendChild(deleteButton);
+		}		
 
 		//get item image
 		let img: HTMLImageElement = <HTMLImageElement>document.createElement("img");
@@ -155,7 +166,10 @@ export class AttachmentEmail implements ComponentFramework.StandardControl<IInpu
 		//add event listeners 
 		divCardBody.addEventListener("click", this.onClickAttachment.bind(this, attachmentRef));
 		img.addEventListener("click", this.onClickAttachment.bind(this, attachmentRef));
-		deleteButton.addEventListener("click", this.onClickDelete.bind(this, divCard, attachmentRef, this._attachmentSource));
+
+		// Disable the deletion for the incoming email
+		if(this.directionCode)
+			deleteButton.addEventListener("click", this.onClickDelete.bind(this, divCard, attachmentRef, this._attachmentSource));
 	}
 
 	private removeBSCard(id: string) {

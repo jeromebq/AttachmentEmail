@@ -3,6 +3,7 @@
   <control namespace="AttachmentEmail" constructor="AttachmentEmail" version="0.0.1" display-name-key="AttachmentEmail" description-key="AttachmentEmail description" control-type="standard">
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
     <property name="AttachmentsGrid" display-name-key="AttachmentsGrid_Display_Key" description-key="AttachmentsGrid_Desc_Key" of-type="SingleLine.Text" usage="bound" required="true" />
+    <property name="EmailDirection" display-name-key="EmailDirection" description-key="EmailDirection" of-type="TwoOptions" usage="bound" required="true" />
     <resources>
       <code path="index.ts" order="1"/>
       <css path="css/AttachmentsGrid.css" order="1" />
