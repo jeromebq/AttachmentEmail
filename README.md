@@ -4,7 +4,7 @@
 
  This custom control if just an amendment of this one : https://github.com/BenLBartle/PCF-AttachmentsGrid
 
-#To be noted
+# To be noted
 
  We can't remove and add any file from an incoming email
 
