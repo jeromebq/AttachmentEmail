@@ -9,7 +9,7 @@
  We can't remove and add any file from an incoming email
 
 
-# Installation and configuraiotn 
+# Installation and configuration 
 
 You can install it by import :
    - the mangaged solution : \AttachmentEmail_Solution\bin\Release\AttachmentEmail_Solution.zip
