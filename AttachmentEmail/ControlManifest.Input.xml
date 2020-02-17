@@ -39,6 +39,7 @@
       <img path='icons/xlsx.png' />
       <img path='icons/xml.png' />
       <img path='icons/zip.png' />
+	  <img path='icons/docx.png' />
       <!-- UNCOMMENT TO ADD MORE RESOURCES
       <css path="css/AttachmentsGrid.css" order="1" />
       <resx path="strings/AttachmentsGrid.1033.resx" version="1.0.0" />

@@ -8,37 +8,41 @@ export class DropHandler {
 
     }
 
-    public HandleDrop(target: HTMLElement, entityId: string, entityLogicalName: string) {
+    //public HandleDrop(target: HTMLElement, entityId: string, entityLogicalName: string) {              
+    public HandleDrop(target: HTMLElement, entityLogicalName: string) {  
         
-        if (entityId) {
-            fromEvent(target, 'drop')
-                .subscribe(async (ev: any) => {
-                    ev.preventDefault();
-                    await this.handleEvent(ev, entityId, entityLogicalName);
-                });
 
-            fromEvent(target, 'dragover')
-                .subscribe(ev => ev.preventDefault());
+        fromEvent(target, 'drop')
+            .subscribe(async (ev: any) => {
+                ev.preventDefault();
+                //await this.handleEvent(ev, entityId, entityLogicalName);
+                await this.handleEvent(ev, entityLogicalName);
+            });
 
-            fromEvent(target, 'dragenter')
-                .subscribe((ev: any) => {
-                    var element = <HTMLElement>ev.target;
-                    element.classList.add('drop-zone-hover');
-                });
+        fromEvent(target, 'dragover')
+            .subscribe(ev => ev.preventDefault());
 
-            fromEvent(target, 'dragleave')
-                .subscribe((ev: any) => {
-                    var element = <HTMLElement>ev.target;
-                    element.classList.remove('drop-zone-hover');
-                });
-        }
+        fromEvent(target, 'dragenter')
+            .subscribe((ev: any) => {
+                var element = <HTMLElement>ev.target;
+                element.classList.add('drop-zone-hover');
+            });
+
+        fromEvent(target, 'dragleave')
+            .subscribe((ev: any) => {
+                var element = <HTMLElement>ev.target;
+                element.classList.remove('drop-zone-hover');
+            });
+        
     }
 
-    private async handleEvent(ev: any, entityId: string, entityLogicalName: string) {
+    //private async handleEvent(ev: any, entityId: string, entityLogicalName: string) {
+    private async handleEvent(ev: any, entityLogicalName: string) {
         if (ev.dataTransfer.items) {
             ev.target.classList.remove('drop-zone-hover');
             this.progressElement.style.visibility = "visible";
-            await this.handleFiles(ev.dataTransfer.files, entityId, entityLogicalName);
+            //await this.handleFiles(ev.dataTransfer.files, entityId, entityLogicalName);
+            await this.handleFiles(ev.dataTransfer.files, entityLogicalName);
             // This is to show the progress bar going to 100% before hiding, for better UX.
             await this.sleep(750);
             this.progressElement.style.visibility = "hidden";
@@ -46,33 +50,45 @@ export class DropHandler {
         }
     }
 
-    private async handleFiles(list: FileList, entityId: string, entityLogicalName: string) {
+    //private async handleFiles(list: FileList, entityId: string, entityLogicalName: string) {
+    private async handleFiles(list: FileList, entityLogicalName: string) {
 
-        for (var i = 0; i < list.length; i++) {
+        var recordId = this.$_GET("id");
 
-            var file = list[i];
+        if(recordId){
+            for (var i = 0; i < list.length; i++) {
 
-            var encodedData = await this.EncodeFile(file);
+                var file = list[i];
+    
+                var encodedData = await this.EncodeFile(file);
+    
+                var attachment = {
+                    "subject": `Attachment: ${file.name}`,
+                    "filename": file.name,
+                    "filesize": file.size,
+                    "mimetype": file.type,
+                    "objecttypecode": entityLogicalName,
+                    "body": encodedData,
+                    //[`objectid_${entityLogicalName}@odata.bind`]: `/${this.CollectionNameFromLogicalName(entityLogicalName)}(${entityId})`
+                    [`objectid_${entityLogicalName}@odata.bind`]: `/${this.CollectionNameFromLogicalName(entityLogicalName)}(${recordId})`
+                };
+                //console.log("Avant création de la pièce jointe : " + recordId);
+                var response = await this.webApi.createRecord('activitymimeattachment', attachment);
 
-            var attachment = {
-                "subject": `Attachment: ${file.name}`,
-                "filename": file.name,
-                "filesize": file.size,
-                "mimetype": file.type,
-                "objecttypecode": entityLogicalName,
-                "body": encodedData,
-                [`objectid_${entityLogicalName}@odata.bind`]: `/${this.CollectionNameFromLogicalName(entityLogicalName)}(${entityId})`
-            };
+                //console.log("Création OK");
 
-            var response = await this.webApi.createRecord('activitymimeattachment', attachment);
-
-            this.attachmentSource.next(new Attachment(new EntityReference('activitymimeattachment', response.id.guid ), this.TrimFileExtension(file.name), this.GetFileExtension(file.name), false));
-
-            console.log(`Attachment: ${file.name} processed, percentage complete: ${this.GetProgressPercentage(i + 1, list.length)}`);
-
-            this.progressBar.style.width = this.GetProgressPercentage(i + 1, list.length);
-
+                this.attachmentSource.next(new Attachment(new EntityReference('activitymimeattachment', response.id.toString() ), this.TrimFileExtension(file.name), this.GetFileExtension(file.name), false));
+    
+                //console.log("ID : " + response.id.guid);
+                //console.log(`Attachment: ${file.name} processed, percentage complete: ${this.GetProgressPercentage(i + 1, list.length)}`);
+    
+                this.progressBar.style.width = this.GetProgressPercentage(i + 1, list.length);
+    
+            }
+        }else{
+            alert("Please save the email and refresh page before add attachment");
         }
+        
     }
 
     private EncodeFile(file: File): Promise<string> {
@@ -106,5 +122,11 @@ export class DropHandler {
 
     private async sleep(msec: number) {
         return new Promise(resolve => setTimeout(resolve, msec));
+    }
+
+    private  $_GET(param: string) : any {
+
+        const parameters = new URLSearchParams(window.location.search);
+        return parameters.get(param);
     }
 }

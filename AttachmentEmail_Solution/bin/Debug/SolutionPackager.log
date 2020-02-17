@@ -1,0 +1,76 @@
+2020-01-09 10:24:20.038 - Info	
+Packing C:\Users\jbecu\Documents\PCF\AttachmentEmail\AttachmentEmail_Solution\obj\Debug\ to bin\Debug\AttachmentEmail_Solution.zip
+
+2020-01-09 10:24:20.077 - Info	Processing Component: Entities
+2020-01-09 10:24:20.086 - Info	Processing Component: Roles
+2020-01-09 10:24:20.094 - Info	Processing Component: Workflows
+2020-01-09 10:24:20.095 - Info	Processing Component: FieldSecurityProfiles
+2020-01-09 10:24:20.096 - Info	Processing Component: Templates
+2020-01-09 10:24:20.100 - Info	Processing Component: EntityMaps
+2020-01-09 10:24:20.100 - Info	Processing Component: EntityRelationships
+2020-01-09 10:24:20.114 - Info	Processing Component: OrganizationSettings
+2020-01-09 10:24:20.116 - Info	Processing Component: optionsets
+2020-01-09 10:24:20.118 - Info	Processing Component: CustomControls
+2020-01-09 10:24:20.138 - Info	 - AttachmentEmail.AttachmentEmail
+2020-01-09 10:24:20.168 - Info	Processing Component: SolutionPluginAssemblies
+2020-01-09 10:24:20.171 - Info	Processing Component: EntityDataProviders
+2020-01-09 10:24:20.312 - Info	
+Unmanaged Pack complete.
+
+2020-01-14 16:08:21.963 - Info	
+Packing C:\Users\jbecu\Documents\PCF\AttachmentEmail\AttachmentEmail_Solution\obj\Debug\ to bin\Debug\AttachmentEmail_Solution.zip
+
+2020-01-14 16:08:21.983 - Info	Processing Component: Entities
+2020-01-14 16:08:21.987 - Info	Processing Component: Roles
+2020-01-14 16:08:21.991 - Info	Processing Component: Workflows
+2020-01-14 16:08:21.993 - Info	Processing Component: FieldSecurityProfiles
+2020-01-14 16:08:21.995 - Info	Processing Component: Templates
+2020-01-14 16:08:21.996 - Info	Processing Component: EntityMaps
+2020-01-14 16:08:21.996 - Info	Processing Component: EntityRelationships
+2020-01-14 16:08:22.003 - Info	Processing Component: OrganizationSettings
+2020-01-14 16:08:22.003 - Info	Processing Component: optionsets
+2020-01-14 16:08:22.004 - Info	Processing Component: CustomControls
+2020-01-14 16:08:22.022 - Info	 - AttachmentEmail.AttachmentEmail
+2020-01-14 16:08:22.044 - Info	Processing Component: SolutionPluginAssemblies
+2020-01-14 16:08:22.046 - Info	Processing Component: EntityDataProviders
+2020-01-14 16:08:22.166 - Info	
+Unmanaged Pack complete.
+
+2020-01-14 16:26:17.844 - Info	
+Packing C:\Users\jbecu\Documents\PCF\AttachmentEmail\AttachmentEmail_Solution\obj\Debug\ to bin\Debug\AttachmentEmail_Solution.zip
+
+2020-01-14 16:26:17.863 - Info	Processing Component: Entities
+2020-01-14 16:26:17.867 - Info	Processing Component: Roles
+2020-01-14 16:26:17.873 - Info	Processing Component: Workflows
+2020-01-14 16:26:17.873 - Info	Processing Component: FieldSecurityProfiles
+2020-01-14 16:26:17.874 - Info	Processing Component: Templates
+2020-01-14 16:26:17.875 - Info	Processing Component: EntityMaps
+2020-01-14 16:26:17.875 - Info	Processing Component: EntityRelationships
+2020-01-14 16:26:17.883 - Info	Processing Component: OrganizationSettings
+2020-01-14 16:26:17.884 - Info	Processing Component: optionsets
+2020-01-14 16:26:17.884 - Info	Processing Component: CustomControls
+2020-01-14 16:26:17.897 - Info	 - AttachmentEmail.AttachmentEmail
+2020-01-14 16:26:17.911 - Info	Processing Component: SolutionPluginAssemblies
+2020-01-14 16:26:17.914 - Info	Processing Component: EntityDataProviders
+2020-01-14 16:26:18.014 - Info	
+Unmanaged Pack complete.
+
+2020-01-14 16:44:33.171 - Info	
+Packing C:\Users\jbecu\Documents\PCF\AttachmentEmail\AttachmentEmail_Solution\obj\Debug\ to bin\Debug\AttachmentEmail_Solution.zip
+
+2020-01-14 16:44:33.198 - Info	Processing Component: Entities
+2020-01-14 16:44:33.203 - Info	Processing Component: Roles
+2020-01-14 16:44:33.208 - Info	Processing Component: Workflows
+2020-01-14 16:44:33.211 - Info	Processing Component: FieldSecurityProfiles
+2020-01-14 16:44:33.212 - Info	Processing Component: Templates
+2020-01-14 16:44:33.213 - Info	Processing Component: EntityMaps
+2020-01-14 16:44:33.214 - Info	Processing Component: EntityRelationships
+2020-01-14 16:44:33.221 - Info	Processing Component: OrganizationSettings
+2020-01-14 16:44:33.223 - Info	Processing Component: optionsets
+2020-01-14 16:44:33.224 - Info	Processing Component: CustomControls
+2020-01-14 16:44:33.238 - Info	 - AttachmentEmail.AttachmentEmail
+2020-01-14 16:44:33.257 - Info	Processing Component: SolutionPluginAssemblies
+2020-01-14 16:44:33.262 - Info	Processing Component: EntityDataProviders
+2020-01-14 16:44:33.388 - Info	
+Unmanaged Pack complete.
+

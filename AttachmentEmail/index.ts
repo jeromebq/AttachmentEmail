@@ -4,6 +4,7 @@ import { DropHandler } from "./drophandler/drophandler";
 import { Attachment } from "./Attachment";
 import { EntityReference } from "./EntityReference";
 import { Subject } from "rxjs";
+import * as data from "./translation.json";
 
 class AttachmentRef {
 	id: string;
@@ -121,7 +122,8 @@ export class AttachmentEmail implements ComponentFramework.StandardControl<IInpu
 		if(this.directionCode){
 
 			this._dropHandler = new DropHandler(this._apiClient, this._progressElement, this._progressBar, this._attachmentSource);		
-			this._dropHandler.HandleDrop(this._dropElement, (<any>context).page.entityId, (<any>context).page.entityTypeName);
+			this._dropHandler.HandleDrop(this._dropElement, (<any>context).page.entityTypeName);
+			//console.log("Création du composant : " + (<any>context).page.entityId);
 		}
 		
 	
@@ -240,7 +242,13 @@ export class AttachmentEmail implements ComponentFramework.StandardControl<IInpu
 		confirmDelete.className = "confirmDelete";
 		divCard.appendChild(confirmDelete);
 		//add html button group
-		confirmDelete.innerHTML = `<div class='btn-group btn-group-sm' role='group'><button id='deleteButton' type='button' class='btn btn-secondary'>Delete</button><button id='cancelButton' type='button' class='btn btn-secondary'>Cancel</button></div>`;
+
+		let userLCID = this._context.userSettings.languageId;
+		const supprimer = (<any>data).Supprimer[userLCID];
+		const annuler = (<any>data).Annuler[userLCID];
+		
+		confirmDelete.innerHTML = "<div class='btn-group btn-group-sm' role='group'><button id='deleteButton' type='button' class='btn btn-secondary'> "+ supprimer +" </button><button id='cancelButton' type='button' class='btn btn-secondary'> "+ annuler +" </button></div>";
+		//confirmDelete.innerHTML = "<div class='btn-group btn-group-sm' role='group'><button id='deleteButton' type='button' class='btn btn-secondary'>Supprimer</button><button id='cancelButton' type='button' class='btn btn-secondary'>Annuler</button></div>";
 		
 		//get button elements from html
 		let cancelButton = document.getElementById("cancelButton");
